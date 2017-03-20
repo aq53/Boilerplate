@@ -46,25 +46,24 @@
 
 	'use strict';
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
 
-	var objOne = {
-	    name: "AQ",
-	    location: "karachi"
-	};
-	var objtwo = _extends({
-	    age: 23
-	}, objOne);
+	// var objOne = {
+	//     name: "AQ",
+	//     location: "karachi"
+	// };
+	// var objtwo = {
+	//     age: 23,
+	//     ...objOne
+	// };
 
-	console.log(objtwo);
+	// console.log(objtwo);
 
 	ReactDOM.render(React.createElement(
-	    'h1',
-	    null,
-	    'Boilerplate App! '
+	  'h1',
+	  null,
+	  'Boilerplate App! '
 	), document.getElementById("app"));
 
 /***/ },
@@ -8055,10 +8054,6 @@
 	  }
 	};
 
-	function registerNullComponentID() {
-	  ReactEmptyComponentRegistry.registerNullComponentID(this._rootNodeID);
-	}
-
 	var ReactEmptyComponent = function (instantiate) {
 	  this._currentElement = null;
 	  this._rootNodeID = null;
@@ -8067,7 +8062,7 @@
 	assign(ReactEmptyComponent.prototype, {
 	  construct: function (element) {},
 	  mountComponent: function (rootID, transaction, context) {
-	    transaction.getReactMountReady().enqueue(registerNullComponentID, this);
+	    ReactEmptyComponentRegistry.registerNullComponentID(rootID);
 	    this._rootNodeID = rootID;
 	    return ReactReconciler.mountComponent(this._renderedComponent, rootID, transaction, context);
 	  },
@@ -18790,7 +18785,7 @@
 
 	'use strict';
 
-	module.exports = '0.14.8';
+	module.exports = '0.14.7';
 
 /***/ },
 /* 147 */
